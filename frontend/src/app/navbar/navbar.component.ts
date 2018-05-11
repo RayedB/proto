@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class AppComponent {
-  title = 'BalaizApp';
+export class NavbarComponent implements OnInit {
   isAuthenticated: boolean;
-
   constructor(public oktaAuth: OktaAuthService) {
       // Subscribe to authentication state changes
       this.oktaAuth.$authenticationState.subscribe(
@@ -29,4 +27,5 @@ export class AppComponent {
     logout() {
       this.oktaAuth.logout('/');
     }
+
 }
