@@ -27,6 +27,6 @@ export class AppComponent {
     }
 
     logout() {
-      this.oktaAuth.logout('/');
+      this.oktaAuth.logout('/login');
     }
 }

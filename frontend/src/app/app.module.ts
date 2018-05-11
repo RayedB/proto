@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { MessageListComponent } from './messagelist/messagelist.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContentComponent } from './content/content.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const ROUTES: Routes = [
   {
@@ -24,6 +26,14 @@ export const ROUTES: Routes = [
   {
     path: 'messages',
     component: MessageListComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
@@ -32,7 +42,9 @@ export const ROUTES: Routes = [
     AppComponent,
     MessageListComponent,
     NavbarComponent,
-    ContentComponent
+    ContentComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
