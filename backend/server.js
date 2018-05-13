@@ -46,7 +46,7 @@ function authenticationRequired(req, res, next) {
 }
 
 const app = express();
-app.use(bodyParser())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
 mongoose.connect('mongodb://localhost/balaizProto')
@@ -100,6 +100,7 @@ app.post('/api/user/create', (req,res) => {
   oktaClient.createUser(newUser)
   .then(user => {
     console.log('Created user', user);
+    res.end()
   });
 })
 
