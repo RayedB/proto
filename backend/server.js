@@ -17,7 +17,7 @@ const oktaJwtVerifier = new OktaJwtVerifier({
 
 const oktaClient = new Okta.Client({
   orgUrl: 'https://dev-874252.oktapreview.com/',
-  token: '00kZboYEZIXC0xHw9Xz4arLfZcl9Sz56knupCTKZBy'    // Obtained from Developer Dashboard
+  token: '000Piwbd1Usjo56iFSubESxzErDRHNEVHnrFOwOT5P'    // Obtained from Developer Dashboard
 });
 
 /**
@@ -83,7 +83,9 @@ app.get('/api/messages', authenticationRequired, (req, res) => {
 });
 
 app.post('/api/user/create', (req,res) => {
+  console.log("body")
   console.log(req.body)
+  console.log("---")
   const newUser = {
     profile: {
       firstName: req.body.first,
@@ -97,6 +99,7 @@ app.post('/api/user/create', (req,res) => {
       }
     }
   };
+  console.log(newUser)
   oktaClient.createUser(newUser)
   .then(user => {
     console.log('Created user', user);

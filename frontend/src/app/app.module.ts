@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OktaAuthModule, OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 import { environment } from '../environments/environment';
-import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const oktaConfig = {
   issuer: 'https://dev-874252.oktapreview.com/oauth2/default',
   redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: environment.oktaClientId
-}
+};
 
 import { AppComponent } from './app.component';
 import { MessageListComponent } from './messagelist/messagelist.component';
@@ -50,7 +51,8 @@ export const ROUTES: Routes = [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     OktaAuthModule.initAuth(oktaConfig),
-    HttpModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

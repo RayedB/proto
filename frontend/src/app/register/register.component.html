@@ -2,35 +2,30 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
                 <div class="card card-body">
-                    <h3 class="text-center mb-4">Sign-up</h3>
-                    <div class="alert alert-danger">
-                        <a class="close font-weight-light" data-dismiss="alert" href="#">×</a>Password is too short.
-                    </div>
-                    <fieldset>
+                    <h3 class="text-center mb-4">Inscription</h3>
+                    <form #companyForm="ngForm" (ngSubmit)="onSubmit()">
                         <div class="form-group has-error">
-                            <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="text">
+                            <input class="form-control input-lg" [(ngModel)]="model.company" placeholder="Entreprise" name="company" id="company" type="text">
+                        </div>
+                        <div class="form-group has-error">
+                            <input class="form-control input-lg" [(ngModel)]="model.first" placeholder="Prénom" name="first" id="first" type="text">
+                        </div>
+                        <div class="form-group has-error">
+                            <input class="form-control input-lg" [(ngModel)]="model.last" placeholder="Nom" name="last" id="last" type="text">
+                        </div>
+                        <div class="form-group has-error">
+                            <input class="form-control input-lg" [(ngModel)]="model.email" placeholder="E-mail Address" id="email" name="email" type="text">
                         </div>
                         <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Password" name="password" value="" type="password">
+                            <input class="form-control input-lg" [(ngModel)]="model.password" placeholder="Password" name="password" id="password" value="" type="password">
                         </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Confirm Password" name="password" value="" type="password">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control input-lg">
-                                <option selecterd="">Sequrity Question</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control input-lg" placeholder="Sequrity Answer" name="answer" value="" type="text">
-                        </div>
-                        <div class="checkbox">
+                        <!-- <div class="checkbox">
                             <label class="small">
                                 <input name="terms" type="checkbox">I have read and agree to the <a href="#">terms of service</a>
                             </label>
-                        </div>
-                        <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
-                    </fieldset>
+                        </div> -->
+                        <input class="btn btn-lg btn-info btn-block" (click)="newCompany(model.company,model.first,model.last,model.email,model.password)" value="S'inscrire" type="submit">
+                    </form>
                 </div>
         </div>
     </div>
