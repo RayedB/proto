@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { OktaAuthService } from '@okta/okta-angular';
-import 'rxjs/Rx';
+import { map } from 'rxjs/operators';
 
 interface Message {
    date: String,
@@ -13,16 +13,16 @@ interface Message {
   templateUrl: './messagelist.component.html',
   styleUrls: ['./messagelist.component.css']
 })
-export class MessageListComponent implements OnInit{
+export class MessageListComponent implements OnInit {
   messages: Array<Message> [];
 
-  constructor(private oktaAuth: OktaAuthService, private http: Http) {
+  constructor(private oktaAuth: OktaAuthService, private http: HttpClient) {
     this.messages = [];
   }
 
   async ngOnInit() {
     const accessToken = await this.oktaAuth.getAccessToken();
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       Authorization: 'Bearer ' + accessToken
     });
     // Make request
@@ -30,7 +30,7 @@ export class MessageListComponent implements OnInit{
       'http://localhost:8080/api/messages',
       new RequestOptions({ headers: headers })
     )
-    .map(res => res.json())
+    .pipe(map(res => res.json()))
     .subscribe((messages) => messages.forEach(msg => this.messages.push(msg)));
   }
 }
