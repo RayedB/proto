@@ -46,7 +46,7 @@ function authenticationRequired(req, res, next) {
 }
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(cors());
 
 mongoose.connect('mongodb://localhost/balaizProto')

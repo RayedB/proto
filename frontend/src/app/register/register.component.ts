@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from '../user.service';
-import { Company } from '../company';
-
 
 @Component({
   selector: 'app-register',
@@ -20,16 +18,13 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
   }
 
-  newCompany(company, first, last, email, password) {
-  let data = new FormData ();
-  data.append('company', company);
-  data.append('first', first);
-  data.append('last', last);
-  data.append('email', email);
-  data.append('password', password);
-  console.log(data);
-  this.userService.createUser(data)
-    .subscribe((data) => console.log(data)) ;
+  newCompany() {
+  console.log(this.model)
+  this.userService.createUser(this.model)
+    .subscribe(
+      response => console.log(response),
+      err => console.log(err)
+    ) ;
 }
 
 
