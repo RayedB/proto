@@ -27,10 +27,6 @@ export class MessageListComponent implements OnInit {
     });
     // Make request
     this.http.get(
-      'http://localhost:8080/api/messages',
-      new RequestOptions({ headers: headers })
-    )
-    .pipe(map(res => res.json()))
-    .subscribe((messages) => messages.forEach(msg => this.messages.push(msg)));
+      'http://localhost:8080/api/messages').subscribe((messages) => messages.forEach(msg => this.messages.push(msg)));
   }
 }

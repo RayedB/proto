@@ -19,6 +19,8 @@ import { ContentComponent } from './content/content.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { AuthGuard } from './auth.guard.service';
+
 export const ROUTES: Routes = [
   {
     path: 'implicit/callback',
@@ -26,7 +28,8 @@ export const ROUTES: Routes = [
   },
   {
     path: 'messages',
-    component: MessageListComponent
+    component: MessageListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -35,6 +38,10 @@ export const ROUTES: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '**',
+    redirectTo: MessageListComponent
   }
 ];
 
